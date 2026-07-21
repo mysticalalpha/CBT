@@ -47,7 +47,7 @@ export function AsciiScene() {
     resize();
     window.addEventListener("resize", resize);
 
-    // Generateur de Torus Knot (noeud torique)
+
     const generateTorusKnot = (
       p: number,
       q: number,
@@ -82,7 +82,7 @@ export function AsciiScene() {
 
     const torusKnot = generateTorusKnot(2, 3, 128, 16);
 
-    // Rotation 3D
+    // 3D rotation
     const rotatePoint = (
       point: Point3D,
       angleX: number,
@@ -112,7 +112,7 @@ export function AsciiScene() {
       return { x: finalX, y: finalY, z };
     };
 
-    // Projection perspective
+    // Perspective projection
     const project = (
       point: Point3D,
       centerX: number,
@@ -137,7 +137,7 @@ export function AsciiScene() {
       const centerY = height * 0.5;
       const scale = Math.min(width, height) * 0.32;
 
-      // Fond transparent (section a son propre bg)
+      // Transparent background (section has its own background)
       ctx.clearRect(0, 0, width, height);
       const mouseInfluenceX = (mouseRef.current.x - 0.5) * 0.5;
       const mouseInfluenceY = (mouseRef.current.y - 0.5) * 0.5;
@@ -147,7 +147,7 @@ export function AsciiScene() {
       const angleY = time * 0.5 + mouseInfluenceX;
       const angleZ = time * 0.2;
 
-      // Projeter et trier les points par profondeur
+      // Project and sort points by depth
       const projectedPoints = torusKnot
         .map((point) => {
           const rotated = rotatePoint(point, angleX, angleY, angleZ);
@@ -155,7 +155,7 @@ export function AsciiScene() {
         })
         .sort((a, b) => a.z - b.z);
 
-      // Rendu ASCII
+      // ASCII rendering
       const charSize = Math.max(14, Math.min(width, height) * 0.03);
       ctx.font = `${charSize}px "Geist Mono", monospace`;
       ctx.textAlign = "center";
@@ -173,7 +173,7 @@ export function AsciiScene() {
         ctx.fillText(char, point.x, point.y);
       });
 
-      // Particules flottantes
+      // Floating particles
       const particleCount = 50;
       for (let i = 0; i < particleCount; i++) {
         const px = (Math.sin(time * 0.5 + i * 0.5) * 0.3 + 0.5) * width;
