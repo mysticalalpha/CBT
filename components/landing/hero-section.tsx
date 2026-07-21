@@ -12,8 +12,8 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-start overflow-hidden bg-transparent">
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
+    <section className="relative min-h-screen flex flex-col justify-start items-start overflow-hidden bg-transparent">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 pt-28 pb-12 md:pt-36 lg:pt-44">
         <div className="lg:max-w-[75%]">
           {/* Eyebrow */}
           <div
