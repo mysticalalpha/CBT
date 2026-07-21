@@ -174,6 +174,7 @@ export function AsciiScene() {
       });
 
       // Floating particles
+
       const particleCount = 50;
       for (let i = 0; i < particleCount; i++) {
         const px = (Math.sin(time * 0.5 + i * 0.5) * 0.3 + 0.5) * width;
