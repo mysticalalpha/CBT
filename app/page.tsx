@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/landing/hero-section";
 import SpotlightCard from "@/components/ui/spotlight-card";
 import DecryptedText from "@/components/ui/decrypted-text";
 import ShinyText from "@/components/ui/shiny-text";
-import PetalsCanvas from "@/components/ui/petals-canvas";
 import BorderGlow from "@/components/ui/border-glow";
 
 const GridScan = dynamic(
@@ -51,8 +50,6 @@ export default function Home() {
           <div className="absolute top-[-20%] left-[-15%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-800 blur-[140px] animate-aurora-slow" />
           <div className="absolute bottom-[-15%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-cyan-400 via-rose-500 to-purple-600 blur-[120px] animate-aurora-reverse" />
         </div>
-        {/* Falling petals canvas */}
-        <PetalsCanvas />
         {/* Soft, dark overlays for readability and glassmorphism highlight */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,182,193,0.02),transparent_60%)]" />
