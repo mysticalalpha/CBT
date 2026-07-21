@@ -1,11 +1,16 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Navigation } from "@/components/landing/navigation";
 import { HeroSection } from "@/components/landing/hero-section";
 import SpotlightCard from "@/components/ui/spotlight-card";
 import DecryptedText from "@/components/ui/decrypted-text";
 import ShinyText from "@/components/ui/shiny-text";
 import PetalsCanvas from "@/components/ui/petals-canvas";
+
+const Lightfall = dynamic(() => import("@/components/ui/lightfall"), {
+  ssr: false,
+});
 import {
   ArrowUpRight,
   Github,
@@ -24,21 +29,26 @@ import {
 export default function Home() {
   return (
     <main className="relative min-h-screen text-white selection:bg-pink-500/20 selection:text-pink-200">
-      {/* 1. FIXED BACKGROUND TREE VIDEO & CANVAS PETALS */}
+      {/* 1. FIXED BACKGROUND LIGHTFALL CANVAS & CANVAS PETALS */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
-        >
-          <source
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bg-hero-0BnFGdr81Ifnj3WbBZoNt1KE4D5DMT.mp4"
-            type="video/mp4"
-          />
-        </video>
+        <Lightfall
+          colors={["#FF69B4", "#DA70D6", "#8A2BE2", "#4B0082"]}
+          backgroundColor="#030308"
+          speed={0.8}
+          streakCount={6}
+          streakWidth={1.5}
+          streakLength={1.5}
+          glow={1.2}
+          density={0.8}
+          twinkle={0.8}
+          zoom={2.5}
+          backgroundGlow={0.6}
+          opacity={0.8}
+          mouseInteraction={true}
+          mouseStrength={1.5}
+          mouseRadius={0.8}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {/* Slowly shifting Aurora gradient spots to custom tint and differentiate background tree */}
         <div className="absolute inset-0 z-[1] mix-blend-color-dodge opacity-25 pointer-events-none">
           <div className="absolute top-[-20%] left-[-15%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-800 blur-[140px] animate-aurora-slow" />
