@@ -7,10 +7,12 @@ import SpotlightCard from "@/components/ui/spotlight-card";
 import DecryptedText from "@/components/ui/decrypted-text";
 import ShinyText from "@/components/ui/shiny-text";
 import PetalsCanvas from "@/components/ui/petals-canvas";
+import BorderGlow from "@/components/ui/border-glow";
 
-const Lightfall = dynamic(() => import("@/components/ui/lightfall"), {
-  ssr: false,
-});
+const GridScan = dynamic(
+  () => import("@/components/ui/grid-scan").then((mod) => mod.GridScan),
+  { ssr: false }
+);
 import {
   ArrowUpRight,
   Github,
@@ -29,24 +31,19 @@ import {
 export default function Home() {
   return (
     <main className="relative min-h-screen text-white selection:bg-pink-500/20 selection:text-pink-200">
-      {/* 1. FIXED BACKGROUND LIGHTFALL CANVAS & CANVAS PETALS */}
+      {/* 1. FIXED BACKGROUND GRIDSCAN CANVAS & CANVAS PETALS */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <Lightfall
-          colors={["#FF69B4", "#DA70D6", "#8A2BE2", "#4B0082"]}
-          backgroundColor="#030308"
-          speed={0.8}
-          streakCount={6}
-          streakWidth={1.5}
-          streakLength={1.5}
-          glow={1.2}
-          density={0.8}
-          twinkle={0.8}
-          zoom={2.5}
-          backgroundGlow={0.6}
-          opacity={0.8}
-          mouseInteraction={true}
-          mouseStrength={1.5}
-          mouseRadius={0.8}
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#2F293A"
+          gridScale={0.1}
+          scanColor="#FF9FFC"
+          scanOpacity={0.4}
+          enablePost={true}
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Slowly shifting Aurora gradient spots to custom tint and differentiate background tree */}
@@ -163,71 +160,101 @@ export default function Home() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
-                <SpotlightCard className="flex flex-col justify-between backdrop-blur-md bg-white/[0.01]">
-                  <div>
-                    <span className="text-xs font-mono text-pink-300/80 mb-4 block">[ 01 / FRONTEND ]</span>
-                    <h3 className="text-xl font-display mb-6 text-white font-bold">Development</h3>
-                    <ul className="space-y-3 font-mono text-sm text-white/70">
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> React / Next.js
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> JavaScript (ES6+)
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> HTML5 & CSS3
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> UI Optimization
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> State Management
-                      </li>
-                    </ul>
-                  </div>
-                </SpotlightCard>
+                <BorderGlow
+                  borderRadius={24}
+                  glowColor="340 100% 80%"
+                  backgroundColor="rgba(255,255,255,0.01)"
+                  colors={["#FF69B4", "#DA70D6", "#8A2BE2"]}
+                  fillOpacity={0.1}
+                  glowIntensity={0.8}
+                  className="h-full"
+                >
+                  <SpotlightCard className="border-none bg-transparent h-full flex flex-col justify-between">
+                    <div>
+                      <span className="text-xs font-mono text-pink-300/80 mb-4 block">[ 01 / FRONTEND ]</span>
+                      <h3 className="text-xl font-display mb-6 text-white font-bold">Development</h3>
+                      <ul className="space-y-3 font-mono text-sm text-white/70">
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> React / Next.js
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> JavaScript (ES6+)
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> HTML5 & CSS3
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> UI Optimization
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> State Management
+                        </li>
+                      </ul>
+                    </div>
+                  </SpotlightCard>
+                </BorderGlow>
 
-                <SpotlightCard className="flex flex-col justify-between backdrop-blur-md bg-white/[0.01]">
-                  <div>
-                    <span className="text-xs font-mono text-pink-300/80 mb-4 block">[ 02 / WORKFLOW ]</span>
-                    <h3 className="text-xl font-display mb-6 text-white font-bold">Tools & Platforms</h3>
-                    <ul className="space-y-3 font-mono text-sm text-white/70">
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> Git / GitHub
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> VS Code IDE
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> Windows OS
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> Automation Scripts
-                      </li>
-                    </ul>
-                  </div>
-                </SpotlightCard>
+                <BorderGlow
+                  borderRadius={24}
+                  glowColor="340 100% 80%"
+                  backgroundColor="rgba(255,255,255,0.01)"
+                  colors={["#FF69B4", "#DA70D6", "#8A2BE2"]}
+                  fillOpacity={0.1}
+                  glowIntensity={0.8}
+                  className="h-full"
+                >
+                  <SpotlightCard className="border-none bg-transparent h-full flex flex-col justify-between">
+                    <div>
+                      <span className="text-xs font-mono text-pink-300/80 mb-4 block">[ 02 / WORKFLOW ]</span>
+                      <h3 className="text-xl font-display mb-6 text-white font-bold">Tools & Platforms</h3>
+                      <ul className="space-y-3 font-mono text-sm text-white/70">
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> Git / GitHub
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> VS Code IDE
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> Windows OS
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> Automation Scripts
+                        </li>
+                      </ul>
+                    </div>
+                  </SpotlightCard>
+                </BorderGlow>
 
-                <SpotlightCard className="flex flex-col justify-between backdrop-blur-md bg-white/[0.01]">
-                  <div>
-                    <span className="text-xs font-mono text-pink-300/80 mb-4 block">[ 03 / METHODOLOGY ]</span>
-                    <h3 className="text-xl font-display mb-6 text-white font-bold">Other Skills</h3>
-                    <ul className="space-y-3 font-mono text-sm text-white/70">
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> Debugging
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> Bug Fixing
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> Technical Docs
-                      </li>
-                      <li className="flex items-center gap-2 hover:text-white transition-colors">
-                        <span className="text-pink-400">→</span> Team Collaboration
-                      </li>
-                    </ul>
-                  </div>
-                </SpotlightCard>
+                <BorderGlow
+                  borderRadius={24}
+                  glowColor="340 100% 80%"
+                  backgroundColor="rgba(255,255,255,0.01)"
+                  colors={["#FF69B4", "#DA70D6", "#8A2BE2"]}
+                  fillOpacity={0.1}
+                  glowIntensity={0.8}
+                  className="h-full"
+                >
+                  <SpotlightCard className="border-none bg-transparent h-full flex flex-col justify-between">
+                    <div>
+                      <span className="text-xs font-mono text-pink-300/80 mb-4 block">[ 03 / METHODOLOGY ]</span>
+                      <h3 className="text-xl font-display mb-6 text-white font-bold">Other Skills</h3>
+                      <ul className="space-y-3 font-mono text-sm text-white/70">
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> Debugging
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> Bug Fixing
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> Technical Docs
+                        </li>
+                        <li className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="text-pink-400">→</span> Team Collaboration
+                        </li>
+                      </ul>
+                    </div>
+                  </SpotlightCard>
+                </BorderGlow>
               </div>
             </div>
           </div>
@@ -249,29 +276,38 @@ export default function Home() {
 
               <div className="space-y-8">
                 {/* Real Internship */}
-                <SpotlightCard className="backdrop-blur-md bg-white/[0.01]">
-                  <div className="flex flex-col md:flex-row justify-between gap-4 md:items-center border-b border-white/5 pb-6 mb-6">
-                    <div>
-                      <span className="text-xs font-mono text-pink-300 uppercase tracking-wider block mb-1">
-                        Austere System Limited
-                      </span>
-                      <h3 className="text-2xl font-display text-white font-bold">
-                        Software Developer Intern
-                      </h3>
+                <BorderGlow
+                  borderRadius={24}
+                  glowColor="340 100% 80%"
+                  backgroundColor="rgba(255,255,255,0.01)"
+                  colors={["#FF69B4", "#DA70D6", "#8A2BE2"]}
+                  fillOpacity={0.1}
+                  glowIntensity={0.8}
+                >
+                  <SpotlightCard className="border-none bg-transparent w-full">
+                    <div className="flex flex-col md:flex-row justify-between gap-4 md:items-center border-b border-white/5 pb-6 mb-6">
+                      <div>
+                        <span className="text-xs font-mono text-pink-300 uppercase tracking-wider block mb-1">
+                          Austere System Limited
+                        </span>
+                        <h3 className="text-2xl font-display text-white font-bold">
+                          Software Developer Intern
+                        </h3>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs font-mono text-white/70 px-4 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
+                        <Calendar className="w-4.5 h-4.5 text-pink-300" />
+                        <span>Sep 2025 - Dec 2025</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-xs font-mono text-white/70 px-4 py-2 rounded-full border border-white/10 bg-white/5 w-fit">
-                      <Calendar className="w-4.5 h-4.5 text-pink-300" />
-                      <span>Sep 2025 - Dec 2025</span>
-                    </div>
-                  </div>
-                  <ul className="space-y-3 text-white/70 text-sm md:text-base font-sans list-disc list-inside">
-                    <li>Developed responsive and reusable UI components using React.</li>
-                    <li>Implemented backend logic using Node.js and handled REST API integrations.</li>
-                    <li>Improved application state management and optimized UI performance.</li>
-                    <li>Identified and resolved layout issues, UI bugs, and performance bottlenecks.</li>
-                    <li>Assisted in backend debugging and feature enhancement.</li>
-                  </ul>
-                </SpotlightCard>
+                    <ul className="space-y-3 text-white/70 text-sm md:text-base font-sans list-disc list-inside">
+                      <li>Developed responsive and reusable UI components using React.</li>
+                      <li>Implemented backend logic using Node.js and handled REST API integrations.</li>
+                      <li>Improved application state management and optimized UI performance.</li>
+                      <li>Identified and resolved layout issues, UI bugs, and performance bottlenecks.</li>
+                      <li>Assisted in backend debugging and feature enhancement.</li>
+                    </ul>
+                  </SpotlightCard>
+                </BorderGlow>
 
                 {/* Forage Simulations */}
                 <div className="pt-6 border-t border-white/10">
@@ -334,60 +370,80 @@ export default function Home() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Project 1 */}
-                <SpotlightCard className="group flex flex-col justify-between h-[400px] backdrop-blur-md bg-white/[0.01]">
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <span className="text-xs font-mono text-white/55">[ React / Node.js ]</span>
-                      <a
-                        href="https://github.com/mysticalalpha"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2.5 border border-white/10 hover:border-pink-300/30 rounded-full bg-white/5 hover:bg-pink-300/10 text-white/70 hover:text-white transition-all"
-                      >
-                        <ArrowUpRight className="w-5 h-5" />
-                      </a>
+                <BorderGlow
+                  borderRadius={24}
+                  glowColor="340 100% 80%"
+                  backgroundColor="rgba(255,255,255,0.01)"
+                  colors={["#FF69B4", "#DA70D6", "#8A2BE2"]}
+                  fillOpacity={0.1}
+                  glowIntensity={0.8}
+                  className="h-full"
+                >
+                  <SpotlightCard className="group border-none bg-transparent flex flex-col justify-between h-[400px]">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <span className="text-xs font-mono text-white/55">[ React / Node.js ]</span>
+                        <a
+                          href="https://github.com/mysticalalpha"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2.5 border border-white/10 hover:border-pink-300/30 rounded-full bg-white/5 hover:bg-pink-300/10 text-white/70 hover:text-white transition-all"
+                        >
+                          <ArrowUpRight className="w-5 h-5" />
+                        </a>
+                      </div>
+                      <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-pink-200 transition-colors">
+                        Victor's Club Website
+                      </h3>
+                      <p className="text-sm text-white/60 leading-relaxed font-sans">
+                        Designed and developed a responsive club website using HTML, CSS, JavaScript, and React. Created backend-supported content flows using Node.js and enhanced navigation usability.
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-pink-200 transition-colors">
-                      Victor's Club Website
-                    </h3>
-                    <p className="text-sm text-white/60 leading-relaxed font-sans">
-                      Designed and developed a responsive club website using HTML, CSS, JavaScript, and React. Created backend-supported content flows using Node.js and enhanced navigation usability.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 font-mono text-[10px] text-white/80">
-                    <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">React</span>
-                    <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Node.js</span>
-                    <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">JavaScript</span>
-                  </div>
-                </SpotlightCard>
+                    <div className="flex flex-wrap gap-2 font-mono text-[10px] text-white/80">
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">React</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Node.js</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">JavaScript</span>
+                    </div>
+                  </SpotlightCard>
+                </BorderGlow>
 
                 {/* Project 2 */}
-                <SpotlightCard className="group flex flex-col justify-between h-[400px] backdrop-blur-md bg-white/[0.01]">
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <span className="text-xs font-mono text-white/55">[ Weather / React ]</span>
-                      <a
-                        href="https://github.com/mysticalalpha"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2.5 border border-white/10 hover:border-pink-300/30 rounded-full bg-white/5 hover:bg-pink-300/10 text-white/70 hover:text-white transition-all"
-                      >
-                        <ArrowUpRight className="w-5 h-5" />
-                      </a>
+                <BorderGlow
+                  borderRadius={24}
+                  glowColor="340 100% 80%"
+                  backgroundColor="rgba(255,255,255,0.01)"
+                  colors={["#FF69B4", "#DA70D6", "#8A2BE2"]}
+                  fillOpacity={0.1}
+                  glowIntensity={0.8}
+                  className="h-full"
+                >
+                  <SpotlightCard className="group border-none bg-transparent flex flex-col justify-between h-[400px]">
+                    <div>
+                      <div className="flex justify-between items-start mb-6">
+                        <span className="text-xs font-mono text-white/55">[ Weather / React ]</span>
+                        <a
+                          href="https://github.com/mysticalalpha"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2.5 border border-white/10 hover:border-pink-300/30 rounded-full bg-white/5 hover:bg-pink-300/10 text-white/70 hover:text-white transition-all"
+                        >
+                          <ArrowUpRight className="w-5 h-5" />
+                        </a>
+                      </div>
+                      <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-pink-200 transition-colors">
+                        Weather Forecasting App
+                      </h3>
+                      <p className="text-sm text-white/60 leading-relaxed font-sans">
+                        Developed a responsive user interface for real-time weather updates, providing improved multi-device compatibility, performance benchmarks, and live API data synchronization.
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-pink-200 transition-colors">
-                      Weather Forecasting App
-                    </h3>
-                    <p className="text-sm text-white/60 leading-relaxed font-sans">
-                      Developed a responsive user interface for real-time weather updates, providing improved multi-device compatibility, performance benchmarks, and live API data synchronization.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 font-mono text-[10px] text-white/80">
-                    <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">React</span>
-                    <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">CSS3</span>
-                    <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Weather API</span>
-                  </div>
-                </SpotlightCard>
+                    <div className="flex flex-wrap gap-2 font-mono text-[10px] text-white/80">
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">React</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">CSS3</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Weather API</span>
+                    </div>
+                  </SpotlightCard>
+                </BorderGlow>
               </div>
             </div>
           </div>
