@@ -418,9 +418,9 @@ export default function Home() {
                   <SpotlightCard className="group border-none bg-transparent flex flex-col justify-between h-[400px]">
                     <div>
                       <div className="flex justify-between items-start mb-6">
-                        <span className="text-xs font-mono text-white/55">[ Weather / React ]</span>
+                        <span className="text-xs font-mono text-white/55">[ React ]</span>
                         <a
-                          href="https://github.com/mysticalalpha"
+                          href="https://campus-resource-management-system.prathameshwakekar8055.workers.dev/"
                           target="_blank"
                           rel="noreferrer"
                           className="p-2.5 border border-white/10 hover:border-pink-300/30 rounded-full bg-white/5 hover:bg-pink-300/10 text-white/70 hover:text-white transition-all"
@@ -429,16 +429,17 @@ export default function Home() {
                         </a>
                       </div>
                       <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-pink-200 transition-colors">
-                        Weather Forecasting App
+                        Campus Resource Management System
                       </h3>
                       <p className="text-sm text-white/60 leading-relaxed font-sans">
-                        Developed a responsive user interface for real-time weather updates, providing improved multi-device compatibility, performance benchmarks, and live API data synchronization.
+                        Campus Resource Management System is a full-stack web application that streamlines the management and booking of campus resources such as classrooms, laboratories, and seminar halls. It enables users to check resource availability, submit booking requests, and efficiently organize resource allocation through a centralized digital platform.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2 font-mono text-[10px] text-white/80">
                       <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">React</span>
-                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">CSS3</span>
-                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Weather API</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Tailwind CSS</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">TypeScript</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Cloudflare Pages</span>
                     </div>
                   </SpotlightCard>
                 </BorderGlow>
