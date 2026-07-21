@@ -381,7 +381,7 @@ export default function Home() {
                       <div className="flex justify-between items-start mb-6">
                         <span className="text-xs font-mono text-white/55">[ React / Node.js ]</span>
                         <a
-                          href="https://github.com/mysticalalpha"
+                          href="https://college-hub-main.prathameshwakekar8055.workers.dev/login"
                           target="_blank"
                           rel="noreferrer"
                           className="p-2.5 border border-white/10 hover:border-pink-300/30 rounded-full bg-white/5 hover:bg-pink-300/10 text-white/70 hover:text-white transition-all"
@@ -390,16 +390,17 @@ export default function Home() {
                         </a>
                       </div>
                       <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-pink-200 transition-colors">
-                        Victor's Club Website
+                        College Connect
                       </h3>
                       <p className="text-sm text-white/60 leading-relaxed font-sans">
-                        Designed and developed a responsive club website using HTML, CSS, JavaScript, and React. Created backend-supported content flows using Node.js and enhanced navigation usability.
+                        College Connect is a unified campus collaboration platform that combines networking, project collaboration, academic resources, and AI-powered career guidance. It helps students, teachers, and recruiters interact efficiently while supporting skill development and career growth.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2 font-mono text-[10px] text-white/80">
                       <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">React</span>
                       <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Node.js</span>
-                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">JavaScript</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Prisma</span>
+                      <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Cloudflare</span>
                     </div>
                   </SpotlightCard>
                 </BorderGlow>
