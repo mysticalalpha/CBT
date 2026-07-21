@@ -531,6 +531,18 @@ export default function Home() {
                       icon: <Linkedin className="w-5 h-5" />,
                       href: "https://www.linkedin.com/in/prathamesh-wakekar-648472296/",
                     },
+                    {
+                      name: "Resume",
+                      handle: "View CV",
+                      icon: <FileText className="w-5 h-5" />,
+                      href: "/resume.pdf",
+                    },
+                    {
+                      name: "Email",
+                      handle: "prathameshwakekar8055",
+                      icon: <Mail className="w-5 h-5" />,
+                      href: "mailto:prathameshwakekar8055@gmail.com",
+                    },
                   ].map((social, i) => (
                     <a
                       key={i}
